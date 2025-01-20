@@ -46,7 +46,7 @@ enctoken = ""
 kite = KiteApp(enctoken=enctoken)
 ```
 
-Other Methods
+Basic API Calls
 ```python
 # Basic calls
 print(kite.profile())
