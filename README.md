@@ -64,7 +64,7 @@ Get Tick Data 'Use Websocket'
 ```python
 from kiteconnect import KiteTicker
 user_id = kite.profile()["user_id"]
-kws = KiteTicker(api_key="TradeViaPython", access_token=enctoken+"&user_id="+user_id)
+kws = KiteTicker(api_key="AlgoTrader", access_token=enctoken+"&user_id="+user_id)
 
 def on_ticks(ws, ticks):
     print(ticks)
@@ -74,6 +74,7 @@ kws.connect(threaded=True)
 while not kws.is_connected():
     time.sleep(1)
 print("WebSocket : Connected")
+# use instrument_token to get data
 kws.subscribe([256265, 260105, 738561, 5633])
 kws.set_mode(kws.MODE_QUOTE, [256265, 260105, 738561, 5633])
 time.sleep(30)
@@ -106,7 +107,7 @@ order = kite.place_order(variety=kite.VARIETY_REGULAR,
                          squareoff=None,
                          stoploss=None,
                          trailing_stoploss=None,
-                         tag="TradeViaPython")
+                         tag="AlgoTrader")
 
 print(order)
 ```
