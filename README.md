@@ -58,9 +58,10 @@ print(kite.positions())
 print(kite.instruments())
 print(kite.instruments("NSE"))
 print(kite.instruments("NFO"))
+```
 
-
-# Get Tick Data 'Use Websocket'
+Get Tick Data 'Use Websocket'
+```python
 from kiteconnect import KiteTicker
 user_id = kite.profile()["user_id"]
 kws = KiteTicker(api_key="TradeViaPython", access_token=enctoken+"&user_id="+user_id)
@@ -77,18 +78,20 @@ kws.subscribe([256265, 260105, 738561, 5633])
 kws.set_mode(kws.MODE_QUOTE, [256265, 260105, 738561, 5633])
 time.sleep(30)
 kws.unsubscribe([256265, 260105, 738561, 5633])
+```
 
-
-# Get Historical Data
+Get Historical Data
+```python
 import datetime
 instrument_token = 9604354
 from_datetime = datetime.datetime.now() - datetime.timedelta(days=7)     # From last & days
 to_datetime = datetime.datetime.now()
 interval = "5minute"
 print(kite.historical_data(instrument_token, from_datetime, to_datetime, interval, continuous=False, oi=False))
+```
 
-
-# Place Order
+Place Order
+```python
 order = kite.place_order(variety=kite.VARIETY_REGULAR,
                          exchange=kite.EXCHANGE_NSE,
                          tradingsymbol="ACC",
@@ -106,8 +109,10 @@ order = kite.place_order(variety=kite.VARIETY_REGULAR,
                          tag="TradeViaPython")
 
 print(order)
+```
 
-# Modify order
+Modify order
+```python
 kite.modify_order(variety=kite.VARIETY_REGULAR,
                   order_id="order_id",
                   parent_order_id=None,
@@ -118,9 +123,13 @@ kite.modify_order(variety=kite.VARIETY_REGULAR,
                   validity=kite.VALIDITY_DAY,
                   disclosed_quantity=None)
 
-# Cancel order
+```
+
+Cancel order
+```python
 kite.cancel_order(variety=kite.VARIETY_REGULAR,
                   order_id="order_id",
                   parent_order_id=None)
+```
                   
 ```
